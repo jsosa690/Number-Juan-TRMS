@@ -1,0 +1,75 @@
+<!-- This form must collect (required): basic employee information;
+ date, time, location, description, cost, grading format, and type of event; 
+ work-related justification.  
+
+ The employee can optionally include: event-related attachments of pdf,
+  png, jpeg, txt, or doc file type, attachments of approvals already 
+  provided of .msg (Outlook Email File) file type and type of approval, 
+  work time that will be missed.  The projected reimbursement should be 
+  provided as a read-only field. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Tuition Reimbursment Form 0</title>
+    <style>
+    </style>    
+    <script type = "text/javascript" src= "submission.js"></script>
+</head>
+<body>
+    <br>
+    <div>
+        <form id = test method = "post">
+            <div class = "row">
+                <div class = "col-sm-1"></div>
+            <div class = "col-sm-2">
+                Full name: <br>
+                <input type = "text" name = "fullName"><br>
+                Date: <br>
+                <input type = "date" name = "startDate"><br>
+                Start Time: <br>
+                <input type = "time" name = "startTime"><br>   
+                End Time: <br>
+                <input type = "time" name = "endTime"><br>   
+                Location: <br>
+                <input type = "text" name = "location"><br>
+            </div>
+            <div class = "col-sm-2">
+                Description: <br>
+                <input type = "text" name = "description"><br>
+                Cost: <br>
+                <input type = "text" name = "cost"><br>
+                Grading Format: <br>
+                <input type = "text" name = "format"><br>
+                Type of event: <br>
+                <select name = "select">
+                    <option value = "University Class">University Class</option>
+                    <option value = "Seminar">Seminar</option>
+                    <option value = "Certification Class">Certification Class</option>
+                    <option value = "Certification">Certification</option>
+                    <option value = "Technical Training">Technical Training</option>
+                    <option value = "Other">Other</option>
+                </select><br>
+                Other attachments: <br>
+                <input type="file"><br>
+                Supervisor: <br>
+                <input type = "text" name = "supervisor"><br> 
+                Benefits Coordinator: <br>
+                <input type = "text" name = "benCo"><br>
+                <input type = "submit" name = "submitbutton"></input>
+            </div>
+            </div>
+            
+        </form>
+        <pre id="output"></pre>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
