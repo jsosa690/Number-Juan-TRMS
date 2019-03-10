@@ -1,13 +1,14 @@
-function toJSONString(name, date, timeStart, timeEnd, loc, desc, amount, sel, sup, ben) {
+function toJSONString(name, date, timeStart, timeEnd, loc, desc, amount, format, sel, sup, ben) {
 	var obj = {
 			fullName : name,
-			startDate : date,
+			date : date,
 			startTime : timeStart,
 			endTime : timeEnd,
 			location : loc,
 			description : desc,
 			cost : amount,
-			select : sel,
+			gradingFormat : format,
+			eventType : sel,
 			supervisor : sup,
 			benCo : ben
 	};

@@ -38,7 +38,7 @@ public class SubmissionServlet extends HttpServlet{
 		fdi.submitForm(root.getFullName(), root.getDate(), root.getStartTime(), root.getEndTime(), root.getLocation(), root.getDescription(), root.getCost(), root.getGradingFormat(), root.getEventType(), root.getSupervisor(), root.getBenCo());
 		
 		RequestDispatcher dispatcher = getServletContext()
-			      .getRequestDispatcher("/form.html");
+			      .getRequestDispatcher("/trmslogin.html");
 			    dispatcher.forward(request, response);
 		
 		
