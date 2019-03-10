@@ -22,7 +22,6 @@ public class LoginServlet extends HttpServlet{
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		System.out.println("Inside of doGet");
 		RequestDispatcher dispatcher = getServletContext()
 			      .getRequestDispatcher("/trmslogin.html");
 			    dispatcher.forward(request, response);
@@ -37,15 +36,21 @@ public class LoginServlet extends HttpServlet{
         try {
             if (udi.verify(au.username, au.password)) {
                 System.out.println("logged in");
+                RequestDispatcher dispatcher = getServletContext()
+      			      .getRequestDispatcher("/trmshome.html");
+		    dispatcher.forward(request, response);
+                
             } else {
                 System.out.println("Not logged in");
+                RequestDispatcher dispatcher = getServletContext()
+      			      .getRequestDispatcher("/trmslogin.html");
+			    dispatcher.forward(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
         }
-		RequestDispatcher dispatcher = getServletContext()
-			      .getRequestDispatcher("/trmslogin.html");
-			    dispatcher.forward(request, response);
+        	
 		
 		
 	}

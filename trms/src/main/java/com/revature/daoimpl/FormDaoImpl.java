@@ -31,8 +31,8 @@ public class FormDaoImpl implements FormDao{
 			cs.setString(10, supervisor);
 			cs.setString(11, benCo);
 			cs.execute();
+			System.out.println("Form entered");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
