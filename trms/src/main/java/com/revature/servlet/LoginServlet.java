@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet{
 		System.out.println("Inside of doPost");
 		ObjectMapper om = new ObjectMapper();
 		User au = om.readValue(request.getInputStream() , User.class);
+		System.out.println(au.toString());
 		UserDaoImpl udi = new UserDaoImpl();
         try {
             if (udi.verify(au.username, au.password)) {
