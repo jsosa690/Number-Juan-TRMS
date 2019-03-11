@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,14 +37,14 @@ public class LoginServlet extends HttpServlet{
         try {
             if (udi.verify(au.username, au.password)) {
                 System.out.println("logged in");
-                RequestDispatcher dispatcher = getServletContext()
-      			      .getRequestDispatcher("/trmshome.html");
-		    dispatcher.forward(request, response);
+                Cookie c = new Cookie("userName",au.username);
+                c.setMaxAge(1800);
+                response.addCookie(c);
+                response.sendRedirect("/trms/home");
                 
             } else {
                 System.out.println("Not logged in");
-                RequestDispatcher dispatcher = getServletContext()
-      			      .getRequestDispatcher("/trmslogin.html");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/trmslogin.html");
 			    dispatcher.forward(request, response);
             }
         } catch (SQLException e) {
