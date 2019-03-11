@@ -30,5 +30,28 @@ public class UserDaoImpl implements UserDao {
 		System.out.println("username not found");
 		return false;
 	}
+	
+	public void findSubmissions(String username)throws SQLException {
+		Connection conn = cf.getConnection();
+		Statement stmt=conn.createStatement();
+		ResultSet rsA = stmt.executeQuery("SELECT * FROM REIMBURSEMENT WHERE FULLNAME = "
+				+ "(SELECT FULLNAME FROM TRMS_USER WHERE USERNAME = '" + username + "');");
+		while(rsA.next()) {
+			/*order: 
+			 * FORMID NUMBER PRIMARY KEY,
+				FULLNAME VARCHAR2(20),
+				EVENTDATE DATE,
+				STARTTIME TIMESTAMP,
+				ENDTIME TIMESTAMP,
+				EVENTLOC VARCHAR2(20),
+				DESCRIPT VARCHAR2(20),
+				EVENTCOST NUMBER,
+				GRADING VARCHAR2(20),
+				EVENTTYPE NUMBER,
+				SUPERVISOR VARCHAR2(20),
+				BENCO VARCHAR2(20)
+			 */
+		}
+	}
 
 }
