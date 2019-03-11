@@ -27,9 +27,10 @@ public class HomeServlet extends HttpServlet {
 		User use = new User();
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
-			use.username = cookies.getName();
+			use.username = cookies.getValue();
 		}
-		udi.findSubmissions(use.username);
+		String json;
+		udi.findSubmissions(use.username, json);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

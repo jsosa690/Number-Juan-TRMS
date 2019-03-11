@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import com.google.gson.Gson;
+import com.revature.beans.Form;
 import com.revature.dao.UserDao;
 import com.revature.util.ConnFactory;
 
@@ -31,11 +34,12 @@ public class UserDaoImpl implements UserDao {
 		return false;
 	}
 	
-	public void findSubmissions(String username)throws SQLException {
+	public void findSubmissions(String username, String json)throws SQLException {
 		Connection conn = cf.getConnection();
 		Statement stmt=conn.createStatement();
 		ResultSet rsA = stmt.executeQuery("SELECT * FROM REIMBURSEMENT WHERE FULLNAME = "
 				+ "(SELECT FULLNAME FROM TRMS_USER WHERE USERNAME = '" + username + "');");
+		ArrayList<Form> list = new ArrayList<>();
 		while(rsA.next()) {
 			/*order: 
 			 * FORMID NUMBER PRIMARY KEY,
@@ -51,6 +55,9 @@ public class UserDaoImpl implements UserDao {
 				SUPERVISOR VARCHAR2(20),
 				BENCO VARCHAR2(20)
 			 */
+			list.add(new Form(rsA.getString(2), rsA.getString(3), rsA.getString(4), rsA.getString(5), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(10), rsA.getString(11), rsA.getString(12)));
+			Gson gson = new Gson();
+			json = gson.toJson(list);
 		}
 	}
 
