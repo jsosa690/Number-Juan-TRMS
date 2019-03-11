@@ -26,7 +26,16 @@ function checkCookie() {
 	  if (username != "") {
 			document.getElementById("welcomeHeader").innerHTML = "Welcome " + username;
 	  } else {
-	    username = prompt("Please enter your name:", "");
+	    //username = prompt("Please enter your name:", "");
+		  var url = 'http://localhost:8080/trms/login';
+			fetch(url, {
+				  method: 'GET', // or 'PUT'
+				  headers:{
+				    'Content-Type': 'application/json'
+				  }
+				}).then(res => res.text())
+				.then(response => console.log('Success:', JSON.stringify(response)))
+				.catch(error => console.error('Error:', error));
 	    if (username != "" && username != null) {
 	      setCookie("username", username, 365);
 	    }
