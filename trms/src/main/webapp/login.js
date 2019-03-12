@@ -12,7 +12,8 @@ function myfunction(usr, pw) {
 				}).then(res => res.text())
 				.then(response => {
 					if (!response.includes("TRMS login")) {
-						window.location.href="/trms/home";						
+						window.location.href="/trms/home";
+						setCookie("username", usr, 1)
 					} else {
 						console.log('Success:', JSON.stringify(response))
 					}

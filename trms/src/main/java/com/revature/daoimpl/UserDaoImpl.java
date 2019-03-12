@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao {
 		Connection conn = cf.getConnection();
 		Statement stmt=conn.createStatement();
 		ResultSet rsA = stmt.executeQuery("SELECT * FROM REIMBURSEMENT WHERE FULLNAME = "
-				+ "(SELECT FULLNAME FROM TRMS_USER WHERE USERNAME = '" + username + "');");
+				+ "(SELECT FULLNAME FROM TRMS_USER WHERE USERNAME = '" + username + "')");
 		ArrayList<Form> list = new ArrayList<>();
 		while(rsA.next()) {
 			/*order: 

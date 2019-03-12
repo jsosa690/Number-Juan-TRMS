@@ -1,6 +1,7 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,24 +21,27 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = -6195015553769926269L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		RequestDispatcher dispatcher = getServletContext()
-			      .getRequestDispatcher("/trmshome.html");
-			    dispatcher.forward(request, response);
 		UserDaoImpl udi = new UserDaoImpl();
 		User use = new User();
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
-<<<<<<< HEAD
-			use.username = cookies.getValue();
+			use.username = cookies[0].getValue();
+			RequestDispatcher dispatcher = getServletContext()
+				      .getRequestDispatcher("/trmshome.html");
+			dispatcher.forward(request, response);
+		} else {
+			System.out.println("cookies not found");
+			response.sendRedirect("/trms/login");
 		}
-		String json;
-		udi.findSubmissions(use.username, json);
-=======
-			use.username = cookies.toString();
-			System.out.println(use.username);
+		try {
+			String json = "";
+			udi.findSubmissions(use.username, json);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
->>>>>>> f2d3ccbf5ca3b6e8a0f84130c28188558add76a7
 	}
+	
+
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = getServletContext()
