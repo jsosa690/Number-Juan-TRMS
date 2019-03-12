@@ -37,10 +37,10 @@ public class LoginServlet extends HttpServlet{
         try {
             if (udi.verify(au.username, au.password)) {
                 System.out.println("logged in");
-                Cookie c = new Cookie("userName",au.username);
+                Cookie c = new Cookie("username",au.username);
                 c.setMaxAge(1800);
                 response.addCookie(c);
-                response.sendRedirect("/trms/home");
+                response.sendRedirect("/trms/home.html");
                 
             } else {
                 System.out.println("Not logged in");
