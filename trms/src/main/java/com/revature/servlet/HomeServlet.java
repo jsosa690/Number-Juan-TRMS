@@ -1,6 +1,7 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +15,7 @@ import com.revature.beans.User;
 import com.revature.daoimpl.UserDaoImpl;
 
 public class HomeServlet extends HttpServlet {
-	
+
 	/**
 	 * 
 	 */
@@ -28,29 +29,21 @@ public class HomeServlet extends HttpServlet {
 		if (cookies != null) {
 			use.username = cookies[0].getValue();
 			RequestDispatcher dispatcher = getServletContext()
-				      .getRequestDispatcher("/trmshome.html");
+					.getRequestDispatcher("/trmshome.html");
 			dispatcher.forward(request, response);
 		} else {
 			System.out.println("cookies not found");
 			response.sendRedirect("/trms/login");
 		}
-		try {
-			System.out.println("Inside of try block");
-			String json = "";
-			json = udi.findSubmissions(use.username);
-			System.out.println(json.toString());
-			System.out.println("will this print");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-	}
-	
 
-	
+
+	}
+
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = getServletContext()
-			      .getRequestDispatcher("/trmshome.html");
-			    dispatcher.forward(request, response);
+				.getRequestDispatcher("/trmshome.html");
+		dispatcher.forward(request, response);
 	}
 }
