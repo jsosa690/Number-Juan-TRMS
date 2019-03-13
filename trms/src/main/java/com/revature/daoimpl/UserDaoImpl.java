@@ -66,13 +66,13 @@ public class UserDaoImpl implements UserDao {
 			 */
 			if (rsA.getString(2).equals(name)) {
 				System.out.println("MATCH");
-				list.add(new Form(rsA.getString(2), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(11), rsA.getString(12)));
+				list.add(new Form(rsA.getInt(1), rsA.getString(2), rsA.getString(3), rsA.getString(4), rsA.getString(5), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(10), rsA.getString(11), rsA.getString(12)));
 				
 				
 			}else if(role == 1 || role == 2) {
 				if(rsA.getString(12).equals(name) || rsA.getString(11).equals(name)) {
 					System.out.println("MATCH");
-					list.add(new Form(rsA.getString(2), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(11), rsA.getString(12)));
+					list.add(new Form(rsA.getInt(1), rsA.getString(2), rsA.getString(3), rsA.getString(4), rsA.getString(5), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(10), rsA.getString(11), rsA.getString(12)));
 				}
 			}
 			

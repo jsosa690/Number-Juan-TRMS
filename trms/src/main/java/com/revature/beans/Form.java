@@ -31,22 +31,22 @@ public class Form {
 		this.benCo = benCo;
 	}
 	
-//	public Form(int formID, String fullName, String date, String startTime, String endTime, String location,
-//			String description, Double cost, String gradingFormat, String eventType, String supervisor, String benCo) {
-//		super();
-//		this.formID = formID;
-//		this.fullName = fullName;
-//		this.date = date;
-//		this.startTime = startTime;
-//		this.endTime = endTime;
-//		this.location = location;
-//		this.description = description;
-//		this.cost = cost;
-//		this.gradingFormat = gradingFormat;
-//		this.eventType = eventType;
-//		this.supervisor = supervisor;
-//		this.benCo = benCo;
-//	}
+	public Form(int formID, String fullName, String date, String startTime, String endTime, String location,
+			String description, Double cost, String gradingFormat, String eventType, String supervisor, String benCo) {
+		super();
+		this.formID = formID;
+		this.fullName = fullName;
+		this.date = date;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.location = location;
+		this.description = description;
+		this.cost = cost;
+		this.gradingFormat = gradingFormat;
+		this.eventType = eventType;
+		this.supervisor = supervisor;
+		this.benCo = benCo;
+	}
 
 	public Form() {
 		super();
