@@ -38,13 +38,16 @@ public class UserDaoImpl implements UserDao {
 	public String findSubmissions(String username)throws SQLException {
 		Connection conn = cf.getConnection();
 		String name = "";
+		int role = 0;
 		PreparedStatement statement = conn.prepareStatement("SELECT * FROM REIMBURSEMENT");
 		ResultSet rsA = statement.executeQuery();
-		PreparedStatement findName = conn.prepareStatement("SELECT FULLNAME FROM TRMS_USER WHERE USERNAME = '" + username + "'");
+		PreparedStatement findName = conn.prepareStatement("SELECT * FROM TRMS_USER WHERE USERNAME = '" + username + "'");
 		ResultSet rsB = findName.executeQuery();
 		ArrayList<Form> list = new ArrayList<>();
 		if (rsB.next()){
-			name = rsB.getString(1);
+			role = rsB.getInt(4);
+			name = rsB.getString(5);
+			
 		}
 		while(rsA.next()) {
 			/*order: 
@@ -66,6 +69,11 @@ public class UserDaoImpl implements UserDao {
 				list.add(new Form(rsA.getString(2), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(11), rsA.getString(12)));
 				
 				
+			}else if(role == 1 || role == 2) {
+				if(rsA.getString(12).equals(name) || rsA.getString(11).equals(name)) {
+					System.out.println("MATCH");
+					list.add(new Form(rsA.getString(2), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(11), rsA.getString(12)));
+				}
 			}
 			
 		}
