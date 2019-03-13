@@ -51,6 +51,20 @@ public class Form {
 	public Form() {
 		super();
 	}
+	
+	
+	public Form(String fullName, String location, String description, Double cost, String gradingFormat,
+			String supervisor, String benCo) {
+		super();
+		this.fullName = fullName;
+		this.location = location;
+		this.description = description;
+		this.cost = cost;
+		this.gradingFormat = gradingFormat;
+		this.supervisor = supervisor;
+		this.benCo = benCo;
+	}
+
 	@Override
 	public String toString() {
 		return "Form [fullName=" + fullName + ", date=" + date + ", startTime=" + startTime + ", endTime=" + endTime

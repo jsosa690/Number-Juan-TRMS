@@ -1,6 +1,7 @@
 package com.revature.daoimpl;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -34,12 +35,17 @@ public class UserDaoImpl implements UserDao {
 		return false;
 	}
 	
-	public void findSubmissions(String username, String json)throws SQLException {
+	public String findSubmissions(String username)throws SQLException {
 		Connection conn = cf.getConnection();
-		Statement stmt=conn.createStatement();
-		ResultSet rsA = stmt.executeQuery("SELECT * FROM REIMBURSEMENT WHERE FULLNAME = "
-				+ "(SELECT FULLNAME FROM TRMS_USER WHERE USERNAME = '" + username + "')");
+		String name = "";
+		PreparedStatement statement = conn.prepareStatement("SELECT * FROM REIMBURSEMENT");
+		ResultSet rsA = statement.executeQuery();
+		PreparedStatement findName = conn.prepareStatement("SELECT FULLNAME FROM TRMS_USER WHERE USERNAME = '" + username + "'");
+		ResultSet rsB = findName.executeQuery();
 		ArrayList<Form> list = new ArrayList<>();
+		if (rsB.next()){
+			name = rsB.getString(1);
+		}
 		while(rsA.next()) {
 			/*order: 
 			 * FORMID NUMBER PRIMARY KEY,
@@ -55,10 +61,18 @@ public class UserDaoImpl implements UserDao {
 				SUPERVISOR VARCHAR2(20),
 				BENCO VARCHAR2(20)
 			 */
-			list.add(new Form(rsA.getString(2), rsA.getString(3), rsA.getString(4), rsA.getString(5), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(10), rsA.getString(11), rsA.getString(12)));
-			Gson gson = new Gson();
-			json = gson.toJson(list);
+			if (rsA.getString(2).equals(name)) {
+				System.out.println("MATCH");
+				list.add(new Form(rsA.getString(2), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(11), rsA.getString(12)));
+				
+				
+			}
+			
 		}
+		Gson gson = new Gson();
+		String json = gson.toJson(list);
+		return json.toString();
+		
 	}
 
 }

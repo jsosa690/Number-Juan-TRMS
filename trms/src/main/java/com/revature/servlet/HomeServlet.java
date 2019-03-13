@@ -21,6 +21,7 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = -6195015553769926269L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+		System.out.println("Inside of doGet");
 		UserDaoImpl udi = new UserDaoImpl();
 		User use = new User();
 		Cookie[] cookies = request.getCookies();
@@ -34,11 +35,15 @@ public class HomeServlet extends HttpServlet {
 			response.sendRedirect("/trms/login");
 		}
 		try {
+			System.out.println("Inside of try block");
 			String json = "";
-			udi.findSubmissions(use.username, json);
+			json = udi.findSubmissions(use.username);
+			System.out.println(json.toString());
+			System.out.println("will this print");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 
