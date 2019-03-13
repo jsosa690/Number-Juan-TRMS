@@ -29,4 +29,13 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <display-name>PopulateServlet</display-name>
+    <servlet-name>PopulateServlet</servlet-name>
+    <servlet-class>com.revature.servlet.PopulateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PopulateServlet</servlet-name>
+    <url-pattern>/populate</url-pattern>
+  </servlet-mapping>
 </web-app>
