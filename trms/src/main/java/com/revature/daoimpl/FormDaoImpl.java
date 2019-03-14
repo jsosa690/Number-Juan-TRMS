@@ -38,5 +38,14 @@ public class FormDaoImpl implements FormDao{
 		
 	}
 	
+	public void updateForm(int account, int position, String decision, String comment) {
+		if(position == 2) {
+			//supervisor
+			
+		}
+		if(position == 3) {
+			//benCo
+		}
+	}
 
 }
