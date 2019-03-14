@@ -21,7 +21,7 @@ function findSubmissions(){
 function makeFormButton (jsonform) {
     console.log(jsonform);
     var newDiv  = document.createElement("div");
-    var divContent = document.createTextNode(jsonform.cost)
+    var divContent = document.createTextNode(jsonform.formID)
     newDiv.appendChild(divContent);
     var newButton = document.createElement("button");
     newButton.addEventListener("click",function() {
@@ -29,11 +29,11 @@ function makeFormButton (jsonform) {
 //		Full name: <br> <input type="text" id="fullName"><br>
 		document.querySelector('#fullName').value = jsonform.fullName;
 //		Date: <br> <input type="date" id="startDate"><br>
-		document.querySelector('#startDate').value = 'jsonform.startDate';
+		document.querySelector('#startDate').value = jsonform.startDate;
 //		Start Time: <br> <input type="time" id="startTime"><br>
-		document.querySelector('#startTime').value = 'jsonform.startTime';
+		document.querySelector('#startTime').value = jsonform.startTime;
 //		End Time: <br> <input type="time" id="endTime"><br>
-		document.querySelector('#endTime').value = 'jsonform.endTime';	
+		document.querySelector('#endTime').value = jsonform.endTime;	
 //		Location: <br> <input type="text" id="location"><br>
 		document.querySelector('#location').value = jsonform.location;
 //		Description: <br> <input type="text" id="description"><br>
@@ -43,8 +43,11 @@ function makeFormButton (jsonform) {
 //		Grading Format: <br> <input type="text" id="format"><br>
 		document.querySelector('#format').value = jsonform.gradingFormat;
 //		Type of event: <br> <select id="select">
+		document.querySelector('#select').value = jsonform.eventType; 
 //		Supervisor: <br> <input type="text" id="supervisor"><br>
+		document.querySelector('#supervisor').value = jsonform.supervisor;
 //		Benefits Coordinator: <br> <input type="text" id="benCo"><br>
+		document.querySelector('#benCo').value = jsonform.benCo;
 	});
     var butContent = document.createTextNode('Update form')
     newButton.appendChild(butContent)

@@ -4,5 +4,5 @@ import java.sql.SQLException;
 
 public interface UserDao {
 
-	boolean verify(String username,String password) throws SQLException;
+	Integer verify(String username,String password) throws SQLException;
 }

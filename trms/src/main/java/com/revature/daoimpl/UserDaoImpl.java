@@ -17,22 +17,22 @@ public class UserDaoImpl implements UserDao {
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
 	@Override
-	public boolean verify(String username, String password) throws SQLException {
+	public Integer verify(String username, String password) throws SQLException {
 		Connection conn = cf.getConnection();
 		Statement stmt=conn.createStatement();
 		ResultSet rsA = stmt.executeQuery("SELECT * FROM TRMS_USER");
 		while(rsA.next()) {
 			if (rsA.getString(2).equals(username)) {
 				if (rsA.getString(3).equals(password)) {
-					return true;
+					return rsA.getInt(4);
 				} else {
 					System.out.println("password not correct");
-					return false;
+					return -1;
 				}
 			}
 		}
 		System.out.println("username not found");
-		return false;
+		return -1;
 	}
 	
 	public String findSubmissions(String username)throws SQLException {
