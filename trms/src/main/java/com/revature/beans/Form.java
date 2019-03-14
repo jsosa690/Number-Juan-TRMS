@@ -2,11 +2,51 @@ package com.revature.beans;
 
 public class Form {
 	
-	public int formID;
+	public Integer formID;
 	public String fullName;
 	public String date;
 	public String startTime;
 	public String endTime;
+	
+	public int getFormID() {
+		return formID;
+	}
+
+	public void setFormID(int formID) {
+		this.formID = formID;
+	}
+
+	public String getSuperDecision() {
+		return superDecision;
+	}
+
+	public void setSuperDecision(String superDecision) {
+		this.superDecision = superDecision;
+	}
+
+	public String getSuperContext() {
+		return superContext;
+	}
+
+	public void setSuperContext(String superContext) {
+		this.superContext = superContext;
+	}
+
+	public String getBenCoDecision() {
+		return benCoDecision;
+	}
+
+	public void setBenCoDecision(String benCoDecision) {
+		this.benCoDecision = benCoDecision;
+	}
+
+	public String getBenCoContext() {
+		return benCoContext;
+	}
+
+	public void setBenCoContext(String benCoContext) {
+		this.benCoContext = benCoContext;
+	}
 	public String location;
 	public String description;
 	public Double cost;
@@ -14,6 +54,10 @@ public class Form {
 	public String eventType;
 	public String supervisor;
 	public String benCo;
+	public String superDecision;
+	public String superContext;
+	public String benCoDecision;
+	public String benCoContext;
 	
 	public Form(String fullName, String date, String startTime, String endTime, String location, String description,
 			Double cost, String gradingFormat, String eventType, String supervisor, String benCo) {
@@ -32,7 +76,8 @@ public class Form {
 	}
 	
 	public Form(int formID, String fullName, String date, String startTime, String endTime, String location,
-			String description, Double cost, String gradingFormat, String eventType, String supervisor, String benCo) {
+			String description, Double cost, String gradingFormat, String eventType, String supervisor, String benCo, 
+			String superDecision, String superContext, String benCoDecision, String benCoContext) {
 		super();
 		this.formID = formID;
 		this.fullName = fullName;
@@ -46,6 +91,10 @@ public class Form {
 		this.eventType = eventType;
 		this.supervisor = supervisor;
 		this.benCo = benCo;
+		this.superDecision = superDecision;
+		this.superContext = superContext;
+		this.benCoDecision = benCoDecision;
+		this.benCoContext = benCoContext;
 	}
 
 	public Form() {
@@ -56,6 +105,7 @@ public class Form {
 	public Form(String fullName, String location, String description, Double cost, String gradingFormat,
 			String supervisor, String benCo) {
 		super();
+		this.formID = 0;
 		this.fullName = fullName;
 		this.location = location;
 		this.description = description;

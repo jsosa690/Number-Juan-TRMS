@@ -1,5 +1,6 @@
-function toJSONString(name, date, timeStart, timeEnd, loc, desc, amount, format, sel, sup, ben) {
+function toJSONString(formID, name, date, timeStart, timeEnd, loc, desc, amount, format, sel, sup, ben, superDecision, superContext, benCoDecision, benCoContext) {
 	var obj = {
+			formID: formID,
 			fullName : name,
 			date : date,
 			startTime : timeStart,
@@ -10,7 +11,11 @@ function toJSONString(name, date, timeStart, timeEnd, loc, desc, amount, format,
 			gradingFormat : format,
 			eventType : sel,
 			supervisor : sup,
-			benCo : ben
+			benCo : ben,
+			superDecision: superDecision,
+			superContext: superContext,
+			benCoDecision: benCoDecision,
+			benCoContext: benCoContext	
 	};
 	var url = 'http://localhost:8080/trms/form';
 	fetch(url, {
