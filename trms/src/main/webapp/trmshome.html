@@ -59,10 +59,10 @@
 					</select><br> Other attachments: <br> <input type="file"><br>
 					Supervisor: <br> <input type="text" id="supervisor"> <br>
 					Benefits Coordinator: <br> <input type="text" id="benCo"><br>
-					Supervisor Decision : <br> <input type="hidden" id="superApproval"> <br>
-					Supervisor Context : <br> <input type="hidden" id="superContext"> <br>
-					BenCo Decision : <br> <input type="hidden" id="benCoApproval"> <br>
-					BenCo Context : <br> <input type="hidden" id="benCoContext"> <br>
+					Supervisor Decision : <br> <input type="checkbox" disabled id="superApproval"> <br>
+					Supervisor Context : <br> <input type="text" disabled id="superContext"> <br>
+					BenCo Decision : <br> <input type="checkbox" disabled id="benCoApproval"> <br>
+					BenCo Context : <br> <input type="text" disabled id="benCoContext"> <br>
 					<button name="submitbutton"
 						onclick="toJSONString(document.getElementById('fullName').value, document.getElementById('startDate').value, document.getElementById('startTime').value, document.getElementById('endTime').value, document.getElementById('location').value, document.getElementById('description').value, document.getElementById('cost').value, document.getElementById('format').value, document.getElementById('select').value, document.getElementById('supervisor').value, document.getElementById('benCo').value)">Submit
 						Form</button>
