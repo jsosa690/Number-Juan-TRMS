@@ -53,8 +53,19 @@ public class FormDaoImpl implements FormDao{
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-				
-			
+			if(Boolean.parseBoolean(decision) == false) {
+				String logic = "{ call BENCOUPDATE( ?, ?, ?)";
+				CallableStatement cs1;
+				try {
+					cs1 = conn.prepareCall(logic);
+					cs1.setInt(1, account);
+					cs1.setString(2, decision);
+					cs1.setString(3, " ");
+					cs1.execute();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		if(position == 3) {
 			//benCo
@@ -69,6 +80,17 @@ public class FormDaoImpl implements FormDao{
 				cs.execute();
 			} catch (SQLException e) {
 				e.printStackTrace();
+			}
+			if(Boolean.parseBoolean(decision) == true) {
+				String logic = "{ call TOTALCHANGE(?)";
+				CallableStatement cs1;
+				try {
+					cs1 = conn.prepareCall(logic);
+					cs1.setInt(1, account);
+					cs1.execute();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
