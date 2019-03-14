@@ -35,11 +35,14 @@ public class LoginServlet extends HttpServlet{
 		System.out.println(au.toString());
 		UserDaoImpl udi = new UserDaoImpl();
         try {
-            if (udi.verify(au.username, au.password)) {
+        	Integer usertype = udi.verify(au.username, au.password);
+            if ( usertype > 0) {
                 System.out.println("logged in");
                 Cookie c = new Cookie("username",au.username);
                 c.setMaxAge(1800);
                 response.addCookie(c);
+                Cookie typecookie = new Cookie("usertype",usertype.toString());
+                response.addCookie(typecookie);
                 response.sendRedirect("/trms/home.html");
                 
             } else {
