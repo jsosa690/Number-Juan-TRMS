@@ -41,10 +41,35 @@ public class FormDaoImpl implements FormDao{
 	public void updateForm(int account, int position, String decision, String comment) {
 		if(position == 2) {
 			//supervisor
+			Connection conn = cf.getConnection();
+			String sql = "{ call SUPERVISORUPDATE( ?, ?, ?)";
+			CallableStatement cs;
+			try {
+				cs = conn.prepareCall(sql);
+				cs.setInt(1, account);
+				cs.setString(2, decision);
+				cs.setString(3, comment);
+				cs.execute();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+				
 			
 		}
 		if(position == 3) {
 			//benCo
+			Connection conn = cf.getConnection();
+			String sql = "{ call BENCOUPDATE( ?, ?, ?)";
+			CallableStatement cs;
+			try {
+				cs = conn.prepareCall(sql);
+				cs.setInt(1, account);
+				cs.setString(2, decision);
+				cs.setString(3, comment);
+				cs.execute();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

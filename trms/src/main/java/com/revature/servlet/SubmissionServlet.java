@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,11 +33,26 @@ public class SubmissionServlet extends HttpServlet{
 		System.out.println("Inside of doPost");
 		ObjectMapper om = new ObjectMapper();
 		Form root = om.readValue(request.getInputStream(), Form.class);
+		System.out.println(root.formID);
 		System.out.println(root.toString());
-		
+		Cookie[] cookies = request.getCookies();		
 		FormDaoImpl fdi = new FormDaoImpl();
-		fdi.submitForm(root.getFullName(), root.getDate(), root.getStartTime(), root.getEndTime(), root.getLocation(), root.getDescription(), root.getCost(), root.getGradingFormat(), root.getEventType(), root.getSupervisor(), root.getBenCo());
-		
+		if(!true) {
+			System.out.println("fuck off java");
+			//fdi.submitForm(root.getFullName(), root.getDate(), root.getStartTime(), root.getEndTime(), root.getLocation(), root.getDescription(), root.getCost(), root.getGradingFormat(), root.getEventType(), root.getSupervisor(), root.getBenCo());
+		} else {
+			System.out.println(root.formID);
+			Integer usertype = Integer.parseInt(cookies[1].getValue());
+			String decision = null,comment = null;
+			if (usertype == 2) {
+				decision = root.superDecision;
+				comment = root.superContext;
+			} else if(usertype == 3) {
+				decision = root.benCoDecision;
+				comment = root.benCoContext;
+			}
+			fdi.updateForm(root.formID, usertype, decision, comment);
+		}
 		RequestDispatcher dispatcher = getServletContext()
 			      .getRequestDispatcher("/trmshome.html");
 			    dispatcher.forward(request, response);
