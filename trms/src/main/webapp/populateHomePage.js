@@ -15,6 +15,16 @@ function findSubmissions(){
     })
     .catch(error => console.error('Error:', error));
     //HOLY SHIT BOYS IT WORKED
+    //
+    usertype = getCookie("usertype");
+    console.log(usertype);
+    if(usertype == 2) {
+    	document.querySelector('#superApproval').disabled = false;
+    	document.querySelector('#superContext').disabled = false;
+    }else if(usertype == 3) {
+    	document.querySelector('#benCoApproval').disabled = false;
+    	document.querySelector('#benCoContext').disabled = false;
+    }
 
 }
 
