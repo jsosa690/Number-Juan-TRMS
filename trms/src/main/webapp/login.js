@@ -20,4 +20,3 @@ function myfunction(usr, pw) {
 						})
 				.catch(error => console.error('Error:', error));
 		}
-
