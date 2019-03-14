@@ -37,9 +37,8 @@ public class SubmissionServlet extends HttpServlet{
 		System.out.println(root.toString());
 		Cookie[] cookies = request.getCookies();		
 		FormDaoImpl fdi = new FormDaoImpl();
-		if(!true) {
-			System.out.println("fuck off java");
-			//fdi.submitForm(root.getFullName(), root.getDate(), root.getStartTime(), root.getEndTime(), root.getLocation(), root.getDescription(), root.getCost(), root.getGradingFormat(), root.getEventType(), root.getSupervisor(), root.getBenCo());
+		if(root.formID == 0) {
+			fdi.submitForm(root.getFullName(), root.getDate(), root.getStartTime(), root.getEndTime(), root.getLocation(), root.getDescription(), root.getCost(), root.getGradingFormat(), root.getEventType(), root.getSupervisor(), root.getBenCo());
 		} else {
 			System.out.println(root.formID);
 			Integer usertype = Integer.parseInt(cookies[1].getValue());
