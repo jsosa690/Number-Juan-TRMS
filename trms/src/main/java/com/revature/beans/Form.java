@@ -62,6 +62,7 @@ public class Form {
 	public Form(String fullName, String date, String startTime, String endTime, String location, String description,
 			Double cost, String gradingFormat, String eventType, String supervisor, String benCo) {
 		super();
+		this.formID = 0;
 		this.fullName = fullName;
 		this.date = date;
 		this.startTime = startTime;

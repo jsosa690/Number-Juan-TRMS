@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
 		Connection conn = cf.getConnection();
 		String name = "";
 		int role = 0;
-		PreparedStatement statement = conn.prepareStatement("SELECT * FROM REIMBURSEMENT");
+		PreparedStatement statement = conn.prepareStatement("SELECT * FROM REIMBURSEMENT UNION SELECT * FROM BENCOAPPROVAL UNION SELECT * FROM FINALDECISION");
 		ResultSet rsA = statement.executeQuery();
 		PreparedStatement findName = conn.prepareStatement("SELECT * FROM TRMS_USER WHERE USERNAME = '" + username + "'");
 		ResultSet rsB = findName.executeQuery();

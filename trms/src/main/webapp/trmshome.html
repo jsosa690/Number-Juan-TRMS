@@ -28,7 +28,7 @@
 		<button id="populateReimbursementsButton" onclick="findSubmissions()">Refresh
 			Reimbursement Reports</button>
 		<!-- Trigger/Open The Modal -->
-		<button id="myBtn">Open Modal</button>
+		<button id="myBtn" onclick="newform()">Open Modal</button>
 		<button id="logoutBtn" onclick="logout()">Log Out</button>
 
 		<!-- The Modal -->
@@ -38,7 +38,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<span class="close">&times;</span>
-					<h2>Modal Header</h2>
+					<h2 id="mhead">0</h2>
 				</div>
 				<div class="modal-body">
 					Full name: <br> <input type="text" id="fullName"><br>
@@ -70,11 +70,11 @@
 					</select> <br>
 					BenCo Context : <br> <input type="text" disabled id="benCoContext"> <br>
 					<button name="submitbutton"
-						onclick="toJSONString(document.getElementById('fullName').value, document.getElementById('startDate').value, document.getElementById('startTime').value, document.getElementById('endTime').value, document.getElementById('location').value, document.getElementById('description').value, document.getElementById('cost').value, document.getElementById('format').value, document.getElementById('select').value, document.getElementById('supervisor').value, document.getElementById('benCo').value, document.querySelector('#superApproval').value,document.querySelector('#superContext').value,document.querySelector('#benCoApproval').value,document.querySelector('#benCoContext').value)">Submit
+						onclick="toJSONString(document.querySelector('#mhead').innerHTML,document.getElementById('fullName').value, document.getElementById('startDate').value, document.getElementById('startTime').value, document.getElementById('endTime').value, document.getElementById('location').value, document.getElementById('description').value, document.getElementById('cost').value, document.getElementById('format').value, document.getElementById('select').value, document.getElementById('supervisor').value, document.getElementById('benCo').value, document.querySelector('#superApproval').value,document.querySelector('#superContext').value,document.querySelector('#benCoApproval').value,document.querySelector('#benCoContext').value)">Submit
 						Form</button>
 				</div>
 				<div class="modal-footer">
-					<h3>Modal Footer</h3>
+					<h3>#JUAN TRMS</h3>
 				</div>
 			</div>
 

@@ -36,6 +36,7 @@ function makeFormButton (jsonform) {
     var newButton = document.createElement("button");
     newButton.addEventListener("click",function() {
 		modal.style.display = "block";
+		document.querySelector('#mhead').innerHTML = jsonform.formID;
 //		Full name: <br> <input type="text" id="fullName"><br>
 		document.querySelector('#fullName').value = jsonform.fullName;
 //		Date: <br> <input type="date" id="startDate"><br>
