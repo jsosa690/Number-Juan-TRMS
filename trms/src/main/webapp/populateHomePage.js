@@ -15,13 +15,17 @@ function findSubmissions(){
     })
     .catch(error => console.error('Error:', error));
     //HOLY SHIT BOYS IT WORKED
-    //
+    
+    // update modal interactivity for usertype
     usertype = getCookie("usertype");
     console.log(usertype);
     if(usertype == 2) {
     	document.querySelector('#superApproval').disabled = false;
     	document.querySelector('#superContext').disabled = false;
-    }else if(usertype == 3) {
+    } else if(usertype == 3) {
+    	document.querySelector('#headApproval').disabled = false;
+    	document.querySelector('#headContext').disabled = false;
+    } else if(usertype == 4) {
     	document.querySelector('#benCoApproval').disabled = false;
     	document.querySelector('#benCoContext').disabled = false;
     }
@@ -57,8 +61,16 @@ function makeFormButton (jsonform) {
 		document.querySelector('#select').value = jsonform.eventType; 
 //		Supervisor: <br> <input type="text" id="supervisor"><br>
 		document.querySelector('#supervisor').value = jsonform.supervisor;
+//		Dept Head: <br> <input type="text" id="departmentHead"><br>
+		document.querySelector('#deptartmentHead').value = jsonform.deptHead;
 //		Benefits Coordinator: <br> <input type="text" id="benCo"><br>
 		document.querySelector('#benCo').value = jsonform.benCo;
+//		Supervisor Context : <br> <input type="text" disabled id="superContext"> <br>
+		document.querySelector('#superContext').value = jsonform.superContext;
+//		Department Head Context : <br> <input type="text" disabled id="headContext"> <br>
+		document.querySelector('#headContext').value = jsonform.headContext;
+//		BenCo Context : <br> <input type="text" disabled id="benCoContext"> <br>
+		document.querySelector('#benCoContext').value = jsonform.benCoContext;
 	});
     var butContent = document.createTextNode('Update form')
     newButton.appendChild(butContent)
