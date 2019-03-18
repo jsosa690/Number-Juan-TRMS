@@ -211,7 +211,8 @@ public class FormDaoImpl implements FormDao{
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            if(!decision.equals("Approved")) {
+            if(decision.contains("dis")) {
+            	System.out.println("sucks");
                 sql = "{ call HEADUPDATE( ?, ?, ?)";
                 try {
                     cs = conn.prepareCall(sql);
@@ -249,7 +250,7 @@ public class FormDaoImpl implements FormDao{
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            if(!decision.equals("Approved")) {
+            if(decision.contains("dis")) {
                 String logic = "{ call BENCOUPDATE( ?, ?, ?)";
                 CallableStatement cs1;
                 try {
@@ -278,7 +279,7 @@ public class FormDaoImpl implements FormDao{
                 e.printStackTrace();
             }
             
-            if(decision.equals("Approved")) {
+            if(decision.contains("dis")) {
                 String logic = "{ call TOTALCHANGE(?,?)";
                 CallableStatement cs1;
                 Double comparator;
