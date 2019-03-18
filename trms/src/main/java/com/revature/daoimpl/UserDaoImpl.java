@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
 		Connection conn = cf.getConnection();
 		String name = "";
 		int role = 0;
-		PreparedStatement statement = conn.prepareStatement("SELECT * FROM REIMBURSEMENT UNION SELECT * FROM BENCOAPPROVAL UNION SELECT * FROM FINALDECISION");
+		PreparedStatement statement = conn.prepareStatement("SELECT * FROM REIMBURSEMENT UNION SELECT * FROM HEADAPPROVAL UNION SELECT * FROM BENCOAPPROVAL UNION SELECT * FROM GRADESUBMISSION UNION SELECT * FROM FINALDECISION");
 		ResultSet rsA = statement.executeQuery();
 		PreparedStatement findName = conn.prepareStatement("SELECT * FROM TRMS_USER WHERE USERNAME = '" + username + "'");
 		ResultSet rsB = findName.executeQuery();
@@ -66,13 +66,13 @@ public class UserDaoImpl implements UserDao {
 			 */
 			if (rsA.getString(2).equals(name)) {
 				System.out.println("MATCH");
-				list.add(new Form(rsA.getInt(1), rsA.getString(2), rsA.getString(3), rsA.getString(4), rsA.getString(5), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(10), rsA.getString(11), rsA.getString(12), rsA.getString(13), rsA.getString(14), rsA.getString(15), rsA.getString(16) ));
+				list.add(new Form(rsA.getInt(1), rsA.getString(2), rsA.getString(3), rsA.getString(4), rsA.getString(5), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(10), rsA.getString(11), rsA.getString(12), rsA.getString(13), rsA.getString(14), rsA.getString(15), rsA.getString(16), rsA.getString(17), rsA.getString(18), rsA.getString(19) ));
 				
 				
-			}else if(role == 2 || role == 3) {
-				if(rsA.getString(12).equals(name) || rsA.getString(11).equals(name)) {
+			}else if(role == 2 || role == 3 || role == 4) {
+				if(rsA.getString(13).equals(name) || rsA.getString(12).equals(name) || rsA.getString(11).equals(name)) {
 					System.out.println("MATCH");
-					list.add(new Form(rsA.getInt(1), rsA.getString(2), rsA.getString(3), rsA.getString(4), rsA.getString(5), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(10), rsA.getString(11), rsA.getString(12), rsA.getString(13), rsA.getString(14), rsA.getString(15), rsA.getString(16)));
+					list.add(new Form(rsA.getInt(1), rsA.getString(2), rsA.getString(3), rsA.getString(4), rsA.getString(5), rsA.getString(6), rsA.getString(7), rsA.getDouble(8), rsA.getString(9), rsA.getString(10), rsA.getString(11), rsA.getString(12), rsA.getString(13), rsA.getString(14), rsA.getString(15), rsA.getString(16), rsA.getString(17), rsA.getString(18), rsA.getString(19) ));
 				}
 			}
 			

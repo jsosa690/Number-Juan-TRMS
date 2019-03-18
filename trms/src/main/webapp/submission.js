@@ -1,4 +1,4 @@
-function toJSONString(formID, name, date, timeStart, timeEnd, loc, desc, amount, format, sel, sup, ben, superDecision, superContext, benCoDecision, benCoContext) {
+function toJSONString(formID, name, date, timeStart, timeEnd, loc, desc, amount, format, sel, sup, head, ben, superDecision, superContext, headDecision, headContext, benCoDecision, benCoContext) {
 	var obj = {
 			formID: formID,
 			fullName : name,
@@ -11,9 +11,12 @@ function toJSONString(formID, name, date, timeStart, timeEnd, loc, desc, amount,
 			gradingFormat : format,
 			eventType : sel,
 			supervisor : sup,
+			deptHead: head,
 			benCo : ben,
 			superDecision: superDecision,
 			superContext: superContext,
+			headDecision: headDecision,
+			headContext: headContext,
 			benCoDecision: benCoDecision,
 			benCoContext: benCoContext	
 	};
@@ -29,19 +32,3 @@ function toJSONString(formID, name, date, timeStart, timeEnd, loc, desc, amount,
 		.catch(error => console.error('Error:', error));
 
 }
-
-function getCookie(cname) {
-	  var name = cname + "=";
-	  var decodedCookie = decodeURIComponent(document.cookie);
-	  var ca = decodedCookie.split(';');
-	  for(var i = 0; i <ca.length; i++) {
-	    var c = ca[i];
-	    while (c.charAt(0) == ' ') {
-	      c = c.substring(1);
-	    }
-	    if (c.indexOf(name) == 0) {
-	      return c.substring(name.length, c.length);
-	    }
-	  }
-	  return "";
-	}

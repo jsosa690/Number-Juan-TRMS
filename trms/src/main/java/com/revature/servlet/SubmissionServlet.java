@@ -38,7 +38,7 @@ public class SubmissionServlet extends HttpServlet{
 		Cookie[] cookies = request.getCookies();		
 		FormDaoImpl fdi = new FormDaoImpl();
 		if(root.formID == 0) {
-			fdi.submitForm(root.getFullName(), root.getDate(), root.getStartTime(), root.getEndTime(), root.getLocation(), root.getDescription(), root.getCost(), root.getGradingFormat(), root.getEventType(), root.getSupervisor(), root.getBenCo());
+			fdi.submitForm(root.getFullName(), root.getDate(), root.getStartTime(), root.getEndTime(), root.getLocation(), root.getDescription(), root.getCost(), root.getGradingFormat(), root.getEventType(), root.getSupervisor(), root.getDeptHead(), root.getBenCo());
 		} else {
 			System.out.println(root.formID);
 			Integer usertype = Integer.parseInt(cookies[1].getValue());
@@ -49,6 +49,9 @@ public class SubmissionServlet extends HttpServlet{
 			} else if(usertype == 3) {
 				decision = root.benCoDecision;
 				comment = root.benCoContext;
+			} else if(usertype == 4) {
+				decision = root.headDecision;
+				decision = root.headContext;
 			}
 			fdi.updateForm(root.formID, usertype, decision, comment);
 		}

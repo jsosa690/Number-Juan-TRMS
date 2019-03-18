@@ -12,5 +12,6 @@ public interface FormDao {
 	String gradingFormat,
 	String eventType,
 	String supervisor,
+	String deptHead,
 	String benCo);
 }
