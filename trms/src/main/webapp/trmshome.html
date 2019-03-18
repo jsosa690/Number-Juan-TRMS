@@ -30,7 +30,7 @@
 		<button id="populateReimbursementsButton" onclick="findSubmissions()">Refresh
 			Reimbursement Reports</button>
 		<!-- Trigger/Open The Modal -->
-		<button id="myBtn" onclick="newform()">Open Modal</button>
+		<button id="myBtn" onclick="newform()">New Form</button>
 		<button id="logoutBtn" onclick="logout()">Log Out</button>
 
 		<!-- The Modal -->
@@ -80,6 +80,8 @@
 					<button name="submitbutton"
 						onclick="toJSONString(document.querySelector('#mhead').innerHTML,document.getElementById('fullName').value, document.getElementById('startDate').value, document.getElementById('startTime').value, document.getElementById('endTime').value, document.getElementById('location').value, document.getElementById('description').value, document.getElementById('cost').value, document.getElementById('format').value, document.getElementById('select').value, document.getElementById('supervisor').value, document.querySelector('#departmentHead').value, document.getElementById('benCo').value, document.querySelector('#superApproval').value, document.querySelector('#superContext').value, document.querySelector('#headApproval').value, document.querySelector('#headContext').value, document.querySelector('#benCoApproval').value,document.querySelector('#benCoContext').value)">Submit
 						Form</button>
+						
+					<button name="commitReimbursement" onclick="FinalApproval(document.querySelector('#mhead').innerHTML)">Final Approval</button>
 				</div>
 				<div class="modal-footer">
 					<h3>#JUAN TRMS</h3>
@@ -102,6 +104,25 @@
 		// When the user clicks the button, open the modal 
 		btn.onclick = function() {
 			modal.style.display = "block";
+			document.querySelector('#mhead').innerHTML = 0
+			document.querySelector('#fullName').value = ""
+			document.querySelector('#startDate').value = ""
+			document.querySelector('#startTime').value = ""
+			document.querySelector('#endTime').value = ""	
+			document.querySelector('#location').value = ""
+			document.querySelector('#description').value = ""
+			document.querySelector('#cost').value = ""
+			document.querySelector('#format').value = ""
+			document.querySelector('#select').value = "" 
+			document.querySelector('#supervisor').value = ""
+			document.querySelector('#departmentHead').value = ""
+			document.querySelector('#benCo').value = ""
+			document.querySelector('#superApproval').value = ""
+			document.querySelector('#superContext').value = ""
+			document.querySelector('#headApproval').value = ""
+			document.querySelector('#headContext').value = ""
+			document.querySelector('#benCoApproval').value = ""
+			document.querySelector('#benCoContext').value = ""
 		}
 
 		// When the user clicks on <span> (x), close the modal

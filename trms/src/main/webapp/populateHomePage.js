@@ -89,3 +89,19 @@ function makeFormButton (jsonform) {
 
 
 }
+function FinalApproval(formID) {
+	var url = 'http://localhost:8080/trms/populate';
+	fetch(url, {
+		method: 'GET',
+		body: formID
+	}).then((res) => {
+		return res.json();
+	})
+	.then((json) => {
+		console.log(json); // The json object is here
+		james = json;
+		return james;
+
+	})
+	.catch(error => console.error('Error:', error));
+}

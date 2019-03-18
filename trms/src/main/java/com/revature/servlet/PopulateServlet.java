@@ -20,6 +20,11 @@ public class PopulateServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -6902201675967604688L;
 
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		int formID = Integer.parseInt(req.getReader().readLine());
+		System.out.println(formID);
+	}
+
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		User use = new User();
 		Cookie[] cookies = req.getCookies();
