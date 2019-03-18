@@ -2,6 +2,8 @@ package com.revature.daoimpl;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.revature.dao.FormDao;
@@ -39,7 +41,7 @@ public class FormDaoImpl implements FormDao{
 		
 	}
 	
-	public void updateForm(int account, int position, String decision, String comment) {
+	public void updateForm(int account, int position, String decision, String comment)throws SQLException{
 		if(position == 2) {
 			// supervisor usertype = 2
 			Connection conn = cf.getConnection();
@@ -120,19 +122,47 @@ public class FormDaoImpl implements FormDao{
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			/*
+			
 			if(decision.equals("Approved")) {
 				String logic = "{ call TOTALCHANGE(?,?)";
 				CallableStatement cs1;
-				try {
+				Double comparator;
+				Double reimbursement;
+				PreparedStatement statement = conn.prepareStatement("SELECT REIMBURSEMENT FROM TRMS_USER WHERE FULLNAME = WHERE FULLNAME = (SELECT FULLNAME FROM FINALDECISION WHERE FORMID = '" + account + "')");
+				ResultSet rsA = statement.executeQuery();
+				comparator = rsA.getDouble(1);
+				
+				PreparedStatement statement2 = conn.prepareStatement("SELECT EVENTTYPE FROM FINALDECISION WHERE FORMID = '" + account + "'");
+				ResultSet rsB = statement2.executeQuery();
+				String casetype = rsB.getString(1);
+				
+				PreparedStatement statement3 = conn.prepareStatement("SELECT EVENTCOST FROM FINALDECISION WHERE FORMID = '" + account + "'");
+				ResultSet rsC = statement3.executeQuery();
+				reimbursement = rsC.getDouble(1);
+				
+				if(casetype.equals("University Class")) {
+					reimbursement = reimbursement*0.8;
+				}else if(casetype.equals("Seminar")) {
+					reimbursement = reimbursement*0.6;
+				}else if(casetype.equals("Certificate Class")) {
+					reimbursement = reimbursement*0.75;
+				}else if(casetype.equals("Certification")) {
+					
+				}else if(casetype.equals("Technical Training")) {
+					reimbursement = reimbursement*0.9;
+				}else if(casetype.equals("Other")) {
+					reimbursement = reimbursement*0.3;
+				}
+				if(reimbursement <= comparator) {
 					cs1 = conn.prepareCall(logic);
 					cs1.setInt(1, account);
 					cs1.setDouble(2, reimbursement);
 					cs1.execute();
-				} catch (SQLException e) {
-					e.printStackTrace();
+				}else {
+					System.out.println("TOO MUCH");
 				}
-			}*/
+					
+			}
 		}
 	}
 
