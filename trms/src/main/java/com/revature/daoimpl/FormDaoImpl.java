@@ -54,7 +54,7 @@ public class FormDaoImpl implements FormDao{
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			if(!decision.equals("Approved")) {
+			if(decision.contains("dis")) {
 				sql = "{ call HEADUPDATE( ?, ?, ?)";
 				try {
 					cs = conn.prepareCall(sql);

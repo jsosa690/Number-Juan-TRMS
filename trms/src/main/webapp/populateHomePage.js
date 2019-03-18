@@ -1,44 +1,44 @@
 function findSubmissions(){
 
-    var url = 'http://localhost:8080/trms/populate';
-    fetch(url, {
-        method: 'POST',
-    }).then((res) => {
-        return res.json();
-    })
-    .then((json) => {
-       console.log(json); // The json object is here
-       james = json;
-       james.forEach(makeFormButton);
-       return james;
-       
-    })
-    .catch(error => console.error('Error:', error));
-    //HOLY SHIT BOYS IT WORKED
-    
-    // update modal interactivity for usertype
-    usertype = getCookie("usertype");
-    console.log(usertype);
-    if(usertype == 2) {
-    	document.querySelector('#superApproval').disabled = false;
-    	document.querySelector('#superContext').disabled = false;
-    } else if(usertype == 3) {
-    	document.querySelector('#headApproval').disabled = false;
-    	document.querySelector('#headContext').disabled = false;
-    } else if(usertype == 4) {
-    	document.querySelector('#benCoApproval').disabled = false;
-    	document.querySelector('#benCoContext').disabled = false;
-    }
+	var url = 'http://localhost:8080/trms/populate';
+	fetch(url, {
+		method: 'POST',
+	}).then((res) => {
+		return res.json();
+	})
+	.then((json) => {
+		console.log(json); // The json object is here
+		james = json;
+		james.forEach(makeFormButton);
+		return james;
+
+	})
+	.catch(error => console.error('Error:', error));
+	//HOLY SHIT BOYS IT WORKED
+
+	// update modal interactivity for usertype
+	usertype = getCookie("usertype");
+	console.log(usertype);
+	if(usertype == 2) {
+		document.querySelector('#superApproval').disabled = false;
+		document.querySelector('#superContext').disabled = false;
+	} else if(usertype == 3) {
+		document.querySelector('#headApproval').disabled = false;
+		document.querySelector('#headContext').disabled = false;
+	} else if(usertype == 4) {
+		document.querySelector('#benCoApproval').disabled = false;
+		document.querySelector('#benCoContext').disabled = false;
+	}
 
 }
 
 function makeFormButton (jsonform) {
-    console.log(jsonform);
-    var newDiv  = document.createElement("div");
-    var divContent = document.createTextNode(jsonform.formID)
-    newDiv.appendChild(divContent);
-    var newButton = document.createElement("button");
-    newButton.addEventListener("click",function() {
+	console.log(jsonform);
+	var newDiv  = document.createElement("div");
+	var divContent = document.createTextNode(jsonform.formID)
+	newDiv.appendChild(divContent);
+	var newButton = document.createElement("button");
+	newButton.addEventListener("click",function() {
 		modal.style.display = "block";
 		document.querySelector('#mhead').innerHTML = jsonform.formID;
 //		Full name: <br> <input type="text" id="fullName"><br>
@@ -62,22 +62,30 @@ function makeFormButton (jsonform) {
 //		Supervisor: <br> <input type="text" id="supervisor"><br>
 		document.querySelector('#supervisor').value = jsonform.supervisor;
 //		Dept Head: <br> <input type="text" id="departmentHead"><br>
-		document.querySelector('#deptartmentHead').value = jsonform.deptHead;
+		document.querySelector('#departmentHead').value = jsonform.deptHead;
 //		Benefits Coordinator: <br> <input type="text" id="benCo"><br>
 		document.querySelector('#benCo').value = jsonform.benCo;
 //		Supervisor Context : <br> <input type="text" disabled id="superContext"> <br>
-		document.querySelector('#superContext').value = jsonform.superContext;
+		document.querySelector('#superApproval').value = jsonform.superDecision;
+		if (jsonform.superContext != undefined) {
+			document.querySelector('#superContext').value = jsonform.superContext; }
+		
 //		Department Head Context : <br> <input type="text" disabled id="headContext"> <br>
-		document.querySelector('#headContext').value = jsonform.headContext;
+		document.querySelector('#headApproval').value = jsonform.superDecision;
+		if (jsonform.headContext != undefined) {
+			document.querySelector('#headContext').value = jsonform.headContext;}
+		
 //		BenCo Context : <br> <input type="text" disabled id="benCoContext"> <br>
-		document.querySelector('#benCoContext').value = jsonform.benCoContext;
+		document.querySelector('#benCoApproval').value = jsonform.superDecision;
+		if (jsonform.benCoContext != undefined) {
+			document.querySelector('#benCoContext').value = jsonform.benCoContext;}
 	});
-    var butContent = document.createTextNode('Update form')
-    newButton.appendChild(butContent)
-    newDiv.appendChild(newButton);
-    sloshy = document.querySelector('.container-fluid')
-    sloshy.insertBefore(newDiv,document.querySelector("#populateReimbursementsButton"))
-    
+	var butContent = document.createTextNode('Update form')
+	newButton.appendChild(butContent)
+	newDiv.appendChild(newButton);
+	sloshy = document.querySelector('.container-fluid')
+	sloshy.insertBefore(newDiv,document.querySelector("#populateReimbursementsButton"))
+
 
 
 }
