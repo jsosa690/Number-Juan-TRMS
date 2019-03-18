@@ -1,6 +1,7 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,7 +54,12 @@ public class SubmissionServlet extends HttpServlet{
 				decision = root.headDecision;
 				decision = root.headContext;
 			}
-			fdi.updateForm(root.formID, usertype, decision, comment);
+			try {
+				fdi.updateForm(root.formID, usertype, decision, comment);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		RequestDispatcher dispatcher = getServletContext()
 			      .getRequestDispatcher("/trmshome.html");
