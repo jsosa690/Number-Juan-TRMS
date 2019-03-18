@@ -12,6 +12,9 @@
 <script src="cookies.js"></script>
 <script src="submission.js"></script>
 <title>Number Juan TRMS</title>
+<style>
+
+</style>
 </head>
 <body onload="checkCookie(),findSubmissions()">
 	<!-- As a link -->
@@ -21,7 +24,7 @@
 	<div class="container-fluid">
 		<h1 id="welcomeHeader">Welcome</h1>
 		<div class="row">
-			<div class='col-sm-4 westSide' style="background-color: #5cb85c;">Buenos</div>
+			<div class='col-sm-4 westSide';">Buenos</div>
 			<div class='col-sm-4' id="downtown" style="background-color: white;">días</div>
 			<div class='col-sm-4' id="eastSide" style="background-color: red;">Mexico</div>
 		</div>
@@ -58,19 +61,25 @@
 						<option value="Other">Other</option>
 					</select><br> Other attachments: <br> <input type="file"><br>
 					Supervisor: <br> <input type="text" id="supervisor"> <br>
+					Department Head: <br> <input type="text" id="departmentHead"><br>
 					Benefits Coordinator: <br> <input type="text" id="benCo"><br>
 					Supervisor Decision : <br> <select disabled id="superApproval">
 						<option value="approved">Approved</option>
 						<option value="disapproved">disapproved</option>
 					</select> <br> 
 					Supervisor Context : <br> <input type="text" disabled id="superContext"> <br>
+					Department Head Decision : <br> <select disabled id="headApproval">
+						<option value="approved">Approved</option>
+						<option value="disapproved">disapproved</option>
+					</select> <br> 
+					Department Head Context : <br> <input type="text" disabled id="headContext"> <br>
 					BenCo Decision : <br> <select disabled id="benCoApproval">
 						<option value="approved">Approved</option>
 						<option value="disapproved">disapproved</option>
 					</select> <br>
 					BenCo Context : <br> <input type="text" disabled id="benCoContext"> <br>
 					<button name="submitbutton"
-						onclick="toJSONString(document.querySelector('#mhead').innerHTML,document.getElementById('fullName').value, document.getElementById('startDate').value, document.getElementById('startTime').value, document.getElementById('endTime').value, document.getElementById('location').value, document.getElementById('description').value, document.getElementById('cost').value, document.getElementById('format').value, document.getElementById('select').value, document.getElementById('supervisor').value, document.getElementById('benCo').value, document.querySelector('#superApproval').value,document.querySelector('#superContext').value,document.querySelector('#benCoApproval').value,document.querySelector('#benCoContext').value)">Submit
+						onclick="toJSONString(document.querySelector('#mhead').innerHTML,document.getElementById('fullName').value, document.getElementById('startDate').value, document.getElementById('startTime').value, document.getElementById('endTime').value, document.getElementById('location').value, document.getElementById('description').value, document.getElementById('cost').value, document.getElementById('format').value, document.getElementById('select').value, document.getElementById('supervisor').value, document.querySelector('#departmentHead').value, document.getElementById('benCo').value, document.querySelector('#superApproval').value, document.querySelector('#superContext').value, document.querySelector('#headApproval').value, document.querySelector('#headContext').value, document.querySelector('#benCoApproval').value,document.querySelector('#benCoContext').value)">Submit
 						Form</button>
 				</div>
 				<div class="modal-footer">
